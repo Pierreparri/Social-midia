@@ -1,0 +1,413 @@
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Fica atrás de tudo */
+  background: linear-gradient(
+    135deg,
+    #d27eff,
+    #b455ff,
+    #d38aff,
+    #c770ff,
+    #d27eff
+  );
+  background-size: 200% 200%;
+  animation: ondasRoxasVibrantes 8s ease-in-out infinite;
+}
+@keyframes ondasRoxasVibrantes {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+header {
+    background-color: #8137C6; 
+    color: white;
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%;
+    text-align: center;
+
+}
+.text{
+    padding-top: 80px;
+    width: 100%;
+}
+
+.feed {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    width: 700px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1020px){
+
+}
+
+/*box flutuante pesquisa*/ 
+* { box-sizing: border-box; }
+body {
+  font: 16px Arial;
+}
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+input {
+    display: flex;
+    align-items: center;
+    border: 1px;
+    background-color: #4a157cc0;
+    width: 400px;
+    margin: 20px auto;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+input[type=text] {
+  background-color: #4a157cc0;
+  width: 100%;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+  
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #8137c6;
+  
+  
+}
+.autocomplete-items div:first-child {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.autocomplete-items div:last-child {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: #7c2dc5 !important;
+  color: #ffffff;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: start;
+    padding: 10px 0 10px 0;
+}
+.post-card{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+.search-container{
+  display: flex;
+  align-items: center;
+}
+.logo{
+  float: left;
+  width: 4%;
+  display: flex;
+  margin-left: 25px;
+  margin-top: 10px;
+  position: absolute;
+}
+.perfil{
+  position: absolute;
+  top: 50%; /* Coloca o elemento no meio do header */
+  right: 25px; /* Alinha o elemento à direita */
+  transform: translateY(-50%); /* Ajusta o elemento para centralizá-lo verticalmente */
+  font-size: 40px; /* Ajuste de tamanho do ícone, se necessário */
+}
+
+
+
+
+.side-panel {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  background: linear-gradient(145deg, #1f1f1f, #121212);
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.4);
+  overflow-x: hidden;
+  transition: 0.5s ease;
+  padding-top: 60px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-panel.open {
+  width: 260px;
+}
+
+.side-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.side-header h2 {
+  font-size: 22px;
+  margin: 0;
+  color: #fff;
+}
+
+.closebtn {
+  font-size: 32px;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.side-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.side-content a {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: #ddd;
+  padding: 12px 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+}
+
+.side-content a:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+.side-content .material-symbols-outlined {
+  margin-right: 10px;
+  font-size: 22px;
+}
+.test {
+  position: fixed; /* Fixa o ícone na tela */
+  bottom: 20px; /* Distância de 20px do fundo da tela */
+  right: 20px; /* Distância de 20px da borda direita */
+  background-color: #7c2dc5; /* Cor de fundo */
+  padding: 20px; /* Espaçamento interno */
+  border-radius: 50%; /* Torna o ícone redondo */
+  display: flex;
+  justify-content: center; /* Centraliza o ícone horizontalmente */
+  align-items: center; /* Centraliza o ícone verticalmente */
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal.show .modal-content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px; /* Largura do modal */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  color: #7c2dc5;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #f44336; /* Cor ao passar o mouse */
+}
+
+/* Estilo dos campos de input e textarea */
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+.text{
+   height: 150px;
+}
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  background-color: #7c2dc5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.modal-content button:hover {
+  background-color: #5a1a98; /* Cor ao passar o mouse */
+}
+
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.left-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.right-actions {
+  display: flex;
+  align-items: center;
+}
+
+.like-icon {
+  cursor: pointer;
+}
+
+.like-icon.liked {
+  color: red;
+}
+.material-symbols-outlined{
+  cursor: pointer;
+}
+
+.perfil-img {
+  width: 40px; /* Tamanho do ícone */
+  height: 40px; /* Tamanho do ícone */
+  border-radius: 50%; /* Deixa a imagem redonda */
+  object-fit: cover; /* Para garantir que a imagem fique bem ajustada */
+}
+
+
+@media screen and (max-width: 768px) {
+  /* Remove a logo */
+  .logo {
+    display: none;
+  }
+
+  /* Reduz o tamanho do input de pesquisa */
+  input {
+    width: 90%;
+    margin: 15px auto;
+    font-size: 14px;
+  }
+
+  /* Ajusta o container do feed */
+  .feed {
+    width: 95%;
+    padding: 0 10px;
+  }
+
+  /* Reduz padding do texto principal */
+  .text {
+    padding-top: 60px;
+    height: auto;
+  }
+
+  /* Reduz tamanho do modal para caber melhor em telas pequenas */
+  .modal-content {
+    width: 90%;
+  }
+
+  /* Ajusta ícone de perfil */
+  .perfil {
+    font-size: 28px;
+    right: 15px;
+  }
+
+  /* Ajusta painel lateral se quiser manter em telas pequenas */
+  .side-panel.open {
+    width: 80%;
+  }
+
+  /* Diminui espaçamento dos links no painel lateral */
+  .side-content a {
+    font-size: 16px;
+    padding: 10px 0;
+  }
+
+  /* Reduz tamanho do botão flutuante */
+  .test {
+    padding: 16px;
+  }
+
+  /* Reduz tamanho dos ícones */
+  .material-symbols-outlined {
+    font-size: 22px;
+  }
+}

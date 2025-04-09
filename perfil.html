@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perfil do Usuário</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <style>
+    /* Estilos gerais da página, incluindo gradiente de fundo e animação */
+    body {
+        background: linear-gradient(
+    135deg,
+    #d27eff,
+    #b455ff,
+    #d38aff,
+    #c770ff,
+    #d27eff
+  );
+  background-size: 200% 200%;
+  animation: ondasRoxasVibrantes 3s ease-in-out infinite;
+      color: #333;
+      padding-top: 0px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Definição da animação de fundo para criar um efeito de movimento */
+    @keyframes ondasRoxasVibrantes {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+    /* Estilos para o container principal do perfil */
+    .profile-container {
+      width: 100%;
+      max-width: 700px;
+      background-color: #d2a5f0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Estilos para o cabeçalho do perfil */
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      padding-bottom: 2rem;
+    }
+
+    /* Banner do perfil */
+    .banner {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* Avatar do usuário, com borda e posição absoluta */
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      position: absolute;
+      top: 140px;
+      background-color: #eee;
+      object-fit: cover;
+    }
+
+    /* Nome do usuário, centralizado */
+    .nome {
+      margin-top: 4.5rem;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    /* Nome de usuário */
+    .username {
+      color: #777;
+      margin-top: 0.3rem;
+      text-align: center;
+    }
+
+    /* Bio do usuário, com itálico e centralizado */
+    .bio {
+      margin-top: 0.8rem;
+      font-style: italic;
+      color: #555;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    /* Estatísticas do perfil (seguidores e seguindo) */
+    .stats {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    /* Estilo para a seção de posts do perfil */
+    .profile-posts {
+      border-top: 1px solid #ddd;
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* Estilo do cartão de cada post */
+    .post-card {
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px, rgba(0, 0, 0, 0.06) 0px 1px 2px;
+    }
+
+    /* Cabeçalho do post, exibindo nome de usuário */
+    .post-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      color: #444;
+      font-weight: bold;
+    }
+
+    /* Rodapé do post, com botões de like, comentário e compartilhamento */
+    .post-footer {
+      display: flex;
+      justify-content: flex-start;
+      gap: 15px;
+      margin-top: 10px;
+      align-items: center;
+    }
+
+    /* Estilo para os ícones (como os de 'like' e 'comentário') */
+    .material-symbols-outlined {
+      cursor: pointer;
+    }
+
+    /* Ícone de like que muda de cor quando clicado */
+    .material-symbols-outlined.liked {
+      color: #e91e63;
+    }
+
+    /* Estilo para a caixa de comentários que inicialmente está oculta */
+    .comments {
+      display: none;
+      margin-top: 12px;
+      padding: 10px;
+      background: #f9f9f9;
+      border-left: 3px solid #ddd;
+      border-radius: 6px;
+    }
+
+    /* Estilo para cada comentário individual */
+    .comment {
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    .comment strong {
+      color: #000;
+    }
+
+    /* Estilos do rodapé do site */
+    .site-footer {
+      background-color: #9e4ccc;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 1rem;
+      margin-top: 3rem;
+      border-top: 2px solid #fff;
+      width: 100%;
+    }
+
+    /* Estilo para os ícones das redes sociais */
+    .social-icons {
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      color: white;
+      margin: 0 0.75rem;
+      font-size: 1.6rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ffd700;
+    }
+
+    /* Estilo para o botão de "Home" */
+    .home-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: transparent;
+      border: none;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .home-btn:hover {
+      color: #ffd700;
+    }
+
+    /* Estilos responsivos para telas menores */
+    @media (max-width: 500px) {
+      .avatar {
+        width: 90px;
+        height: 90px;
+        top: 130px;
+      }
+
+      .nome {
+        font-size: 1.4rem;
+      }
+
+      .stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Botão de "Voltar para a home" -->
+  <button class="home-btn" onclick="window.location.href='index.html'">
+    <span class="material-symbols-outlined">arrow_back</span>
+  </button>
+
+  <!-- Container principal do perfil do usuário -->
+  <main class="profile-container">
+    <!-- Cabeçalho do perfil com informações do usuário -->
+    <section class="profile-header">
+      <img class="banner" src="img/fundo_perfil.webp" alt="Banner do usuário">
+      <img class="avatar" src="img/joao.jpeg" alt="Avatar do usuário">
+      <h2 class="nome">João da Silva</h2>
+      <p class="username">@joaosilva</p>
+      <p class="bio">Desenvolvedor apaixonado por café e código. ☕👨‍💻</p>
+      <div class="stats">
+        <span><strong>1.254</strong> Seguidores</span>
+        <span><strong>580</strong> Seguindo</span>
+      </div>
+    </section>
+
+    <!-- Seção com os posts do usuário -->
+    <section class="profile-posts" id="profile-posts">
+      <!-- Cada post é representado por um "post-card", incluindo título, conteúdo e interações (like, comentário, compartilhar) -->
+      <!-- Exemplo de um post: -->
+      <div class="post-card">
+        <div class="post-header">
+          <span class="material-symbols-outlined">person</span> @joaosilva
+        </div>
+        <div> <strong>Finalizei meu primeiro projeto em React!</strong></div>
+        <div>Depois de semanas de estudo, finalmente terminei meu primeiro app com React. Uma lista de tarefas com dark mode e persistência no localStorage. 🎉</div>
+        <div class="post-footer">
+          <span class="material-symbols-outlined like-icon">favorite</span>
+          <span class="material-symbols-outlined comment-icon" data-postid="1">comment</span>
+          <span class="material-symbols-outlined share-icon" data-postid="1">share</span>
+        </div>
+        <div class="comments" id="comments-1"></div>
+      </div>
+        
+          <!-- Post 2 -->
+          <div class="post-card">
+            <div class="post-header"><span class="material-symbols-outlined">person</span> @joaosilva</div>
+            <div><strong>Aprendendo Node.js</strong> </div>
+            <div>Hoje comecei a estudar Node.js e já estou impressionado com o poder do JavaScript no backend!</div>
+            <div class="post-footer">
+              <span class="material-symbols-outlined like-icon">favorite</span>
+              <span class="material-symbols-outlined comment-icon" data-postid="2">comment</span>
+              <span class="material-symbols-outlined share-icon" data-postid="2">share</span>
+            </div>
+            <div class="comments" id="comments-2"></div>
+          </div>
+        
+          <!-- Post 3 -->
+          <div class="post-card">
+            <div class="post-header"><span class="material-symbols-outlined">person</span> @joaosilva</div>
+            <div><strong>Código limpo é vida</strong> </div>
+            <div>Refatorei meu projeto seguindo os princípios de Clean Code. Agora tudo faz mais sentido.</div>
+            <div class="post-footer">
+              <span class="material-symbols-outlined like-icon">favorite</span>
+              <span class="material-symbols-outlined comment-icon" data-postid="3">comment</span>
+              <span class="material-symbols-outlined share-icon" data-postid="3">share</span>
+            </div>
+            <div class="comments" id="comments-3"></div>
+          </div>
+        
+          <!-- Post 4 -->
+          <div class="post-card">
+            <div class="post-header"><span class="material-symbols-outlined">person</span> @joaosilva</div>
+            <div><strong>CSS Grid é mágico!</strong> </div>
+            <div>Descobri o poder do CSS Grid hoje e estou apaixonado. Layouts nunca mais serão os mesmos!</div>
+            <div class="post-footer">
+              <span class="material-symbols-outlined like-icon">favorite</span>
+              <span class="material-symbols-outlined comment-icon" data-postid="4">comment</span>
+              <span class="material-symbols-outlined share-icon" data-postid="4">share</span>
+            </div>
+            <div class="comments" id="comments-4"></div>
+          </div>
+        
+          <!-- Post 5 -->
+          <div class="post-card">
+            <div class="post-header"><span class="material-symbols-outlined">person</span> @joaosilva</div>
+            <div><strong> Deploy no Vercel</strong></div>
+            <div>Fiz o deploy do meu portfólio no Vercel e foi mais fácil do que imaginava. Super recomendo!</div>
+            <div class="post-footer">
+              <span class="material-symbols-outlined like-icon">favorite</span>
+              <span class="material-symbols-outlined comment-icon" data-postid="5">comment</span>
+              <span class="material-symbols-outlined share-icon" data-postid="5">share</span>
+            </div>
+            <div class="comments" id="comments-5"></div>
+          </div>
+        
+          <!-- Post 6 -->
+          <div class="post-card">
+            <div class="post-header"><span class="material-symbols-outlined">person</span> @joaosilva</div>
+            <div><strong>Erro 500, o inimigo invisível</strong> </div>
+            <div>Depois de horas procurando um bug, descobri que era só uma vírgula faltando. Vida de dev!</div>
+            <div class="post-footer">
+              <span class="material-symbols-outlined like-icon">favorite</span>
+              <span class="material-symbols-outlined comment-icon" data-postid="6">comment</span>
+              <span class="material-symbols-outlined share-icon" data-postid="6">share</span>
+            </div>
+            <div class="comments" id="comments-6"></div>
+          </div>
+        
+          <!-- Post 7 -->
+          <div class="post-card">
+            <div class="post-header"><span class="material-symbols-outlined">person</span> @joaosilva</div>
+            <div><strong> Vim ou VSCode?</strong></div>
+            <div>Testando o Vim por 1 semana. Será que abandono o VSCode?</div>
+            <div class="post-footer">
+              <span class="material-symbols-outlined like-icon">favorite</span>
+              <span class="material-symbols-outlined comment-icon" data-postid="7">comment</span>
+              <span class="material-symbols-outlined share-icon" data-postid="7">share</span>
+            </div>
+            <div class="comments" id="comments-7"></div>
+          </div>
+        
+          <!-- Post 8 -->
+          <div class="post-card">
+            <div class="post-header"><span class="material-symbols-outlined">person</span> @joaosilva</div>
+            <div><strong>Meu setup de desenvolvimento</strong> </div>
+            <div>Teclado mecânico, monitor ultrawide e um bom café. Pronto pra programar!</div>
+            <div class="post-footer">
+              <span class="material-symbols-outlined like-icon">favorite</span>
+              <span class="material-symbols-outlined comment-icon" data-postid="8">comment</span>
+              <span class="material-symbols-outlined share-icon" data-postid="8">share</span>
+            </div>
+            <div class="comments" id="comments-8"></div>
+          </div>
+        
+          <!-- Post 9 -->
+          <div class="post-card">
+            <div class="post-header"><span class="material-symbols-outlined">person</span> @joaosilva</div>
+            <div><strong>Python, meu velho amigo</strong> </div>
+            <div>Voltei a programar em Python e bateu aquela nostalgia de quando comecei na programação.</div>
+            <div class="post-footer">
+              <span class="material-symbols-outlined like-icon">favorite</span>
+              <span class="material-symbols-outlined comment-icon" data-postid="9">comment</span>
+              <span class="material-symbols-outlined share-icon" data-postid="9">share</span>
+            </div>
+            <div class="comments" id="comments-9"></div>
+          </div>
+        
+          <!-- Post 10 -->
+          <div class="post-card">
+            <div class="post-header"><span class="material-symbols-outlined">person</span> @joaosilva</div>
+            <div><strong> Primeira contribuição open source</strong></div>
+            <div>Contribuí com uma issue de um projeto open source no GitHub! Sensação de dever cumprido.</div>
+            <div class="post-footer">
+              <span class="material-symbols-outlined like-icon">favorite</span>
+              <span class="material-symbols-outlined comment-icon" data-postid="10">comment</span>
+              <span class="material-symbols-outlined share-icon" data-postid="10">share</span>
+            </div>
+            <div class="comments" id="comments-10"></div>
+          </div>
+        
+          <!-- Post 11 -->
+          <div class="post-card">
+            <div class="post-header"><span class="material-symbols-outlined">person</span> @joaosilva</div>
+            <div><strong>Bora estudar TypeScript!</strong> </div>
+            <div>Hora de tipar meu JavaScript! Começando hoje minha jornada com TypeScript 💪</div>
+            <div class="post-footer">
+              <span class="material-symbols-outlined like-icon">favorite</span>
+              <span class="material-symbols-outlined comment-icon" data-postid="11">comment</span>
+              <span class="material-symbols-outlined share-icon" data-postid="11">share</span>
+            </div>
+            <div class="comments" id="comments-11"></div>
+          </div>
+        </section>
+      
+  </main>
+
+  <script>
+    // Like interativo
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("like-icon")) {
+        e.target.classList.toggle("liked");
+      }
+    });
+
+    // Comentários
+    document.addEventListener("click", async (e) => {
+      if (e.target.classList.contains("comment-icon")) {
+        const postId = e.target.dataset.postid;
+        const commentsBox = document.getElementById(`comments-${postId}`);
+
+        if (commentsBox.style.display === "block") {
+          commentsBox.style.display = "none";
+          return;
+        }
+
+        if (commentsBox.innerHTML.trim() !== "") {
+          commentsBox.style.display = "block";
+          return;
+        }
+
+        try {
+          const response = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}&_limit=4`);
+          const comments = await response.json();
+          commentsBox.innerHTML = comments.map(c => `
+            <div class="comment">
+              <strong>${c.name}</strong>: ${c.body}
+            </div>
+          `).join("");
+          commentsBox.style.display = "block";
+        } catch (error) {
+          console.error("Erro ao carregar comentários:", error);
+        }
+      }
+    });
+  </script>
+   <footer class="site-footer">
+    © 2025 Pedro Alves Pires. Todos os direitos reservados.
+    <div class="social-icons">
+      <a href="#"><span class="material-symbols-outlined">link</span></a>
+      <a href="#"><span class="material-symbols-outlined">mail</span></a>
+      <a href="#"><span class="material-symbols-outlined">share</span></a>
+    </div>
+  </footer>
+</body>
+</html>

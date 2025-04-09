@@ -1,0 +1,76 @@
+<!DOCTYPE html> <!-- Define o tipo de documento como HTML5 -->
+<html lang="PT-BR"> <!-- Define o idioma da página como Português Brasileiro -->
+<head>
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Garante que a página seja responsiva em dispositivos móveis -->
+    <link rel="stylesheet" href="style.css"> <!-- Vincula a folha de estilos CSS externa -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" /> <!-- Inclui a fonte dos ícones materiais do Google -->
+    <title>Document</title> <!-- Define o título da página -->
+</head>
+<body>
+    <!-- Cabeçalho da página -->
+    <header>
+        <img src="img/logo.png" class="logo" > <!-- Logo da página -->
+        <div class="perfil" onclick="toggleSidebar()"> <!-- Área do perfil, ao clicar abre/fecha o menu lateral -->
+            <img src="img/joao.jpeg" alt="Foto do Perfil" class="perfil-img"> <!-- Foto do perfil -->
+        </div>
+        <div class="autocomplete" style="width:300px;"> <!-- Barra de pesquisa com autocomplete -->
+            <div class="search-container">
+                <span class="material-symbols-outlined">search</span> <!-- Ícone de pesquisa -->
+                <input id="myInput" type="text" name="pesquisar" placeholder="Pesquisar"> <!-- Campo de texto para pesquisa -->
+            </div> 
+        </div>
+    </header>
+    <div class="test" onclick="openModal()"> <!-- Ícone para abrir o modal de post -->
+        <span class="material-symbols-outlined">
+            add_circle
+        </span>
+    </div>
+
+    <!-- Seção de conteúdo com os posts -->
+    <main class="text">
+        <section id="content" class="feed"></section> <!-- Feed de conteúdo (posts) -->
+    </main>
+
+    <!-- Menu Lateral (Side Panel) -->
+    <div id="sidePanel" class="side-panel"> <!-- Menu lateral que aparece ao clicar no perfil -->
+        <div class="side-header">
+            <button class="closebtn" onclick="toggleSidebar()">&times;</button> <!-- Botão para fechar o menu lateral -->
+            <h2>Menu</h2>
+        </div>
+        <div class="side-content">
+            <a href="perfil.html">
+                <span class="material-symbols-outlined">person</span> <!-- Ícone de perfil -->
+                Perfil
+            </a>
+            <a href="#">
+                <span class="material-symbols-outlined">settings</span> <!-- Ícone de configurações -->
+                Configurações
+            </a>
+            <a href="#">
+                <span class="material-symbols-outlined">logout</span> <!-- Ícone de sair -->
+                Sair
+            </a>
+        </div>
+    </div>
+  
+    <!-- Modal (Janela de Postagem) -->
+    <div id="modal" class="modal"> <!-- Modal que aparece para criar um post -->
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span> <!-- Botão para fechar o modal -->
+            <h2>Post</h2>
+            <form id="modalForm" onsubmit="submitForm(event)"> <!-- Formulário para criar o post -->
+                <label for="title">Título:</label> <!-- Campo para título do post -->
+                <input type="text" id="title" name="title" placeholder="Digite o título" required>
+
+                <label for="text">Texto:</label> <!-- Campo para texto do post -->
+                <textarea id="text" name="text" placeholder="Digite o texto" required></textarea>
+
+                <button type="submit">Salvar</button> <!-- Botão para salvar o post -->
+            </form>
+        </div>
+    </div>
+
+</body>
+<script src="./main.js"></script> <!-- Arquivo JavaScript com funcionalidades da página -->
+</html>
