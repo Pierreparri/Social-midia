@@ -4,8 +4,7 @@
 Site inspirado em postagens de textos, com uma proposta parecida com o Twitter, focado em publicações simples e interação de usuários.
 
 ## Demonstração
-> *Adicione aqui prints do site ou link online se desejar*
-
+> (https://pierreparri.github.io/Social-midia/)
 ---
 
 ## Tecnologias utilizadas
